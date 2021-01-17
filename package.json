@@ -1,0 +1,48 @@
+{
+  "name": "@gup-front/date-picker",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gugegev5/date-picker.git"
+  },
+  "keywords": [
+    "lunar",
+    "solar",
+    "H5"
+  ],
+  "author": "gup",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gugegev5/date-picker/issues"
+  },
+  "homepage": "https://github.com/gugegev5/date-picker#readme",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "index.d.ts",
+    "dist/"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "@types/lodash": "^4.14.167",
+    "@types/react": "^17.0.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.1",
+    "less": "^4.1.0",
+    "less-loader": "^7.2.1",
+    "react": "^17.0.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.12.3",
+    "webpack-cli": "^4.3.1"
+  }
+}
