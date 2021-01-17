@@ -4,9 +4,9 @@ module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
   output: {
-    filename: "webpack-numbers.js",
-    path: path.resolve(__dirname, "../../webpack/webpack_guide/dist"), //todotodo
-    library: "webpackNumbers",
+    filename: "datepicker.js",
+    path: path.resolve(__dirname, "dist"),
+    library: "datepicker",
     libraryTarget: "umd",
   },
   devtool: "inline-source-map",
