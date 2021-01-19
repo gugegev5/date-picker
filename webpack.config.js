@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: "./src/index.tsx",
   output: {
     filename: "datepicker.js",
@@ -22,6 +22,10 @@ module.exports = {
     rules: [
       {
         test: /\.(j|t)sx?$/,
+        include: [
+          // path.resolve(__dirname, "/node_modules/lunar-typescript"),
+          path.resolve(__dirname, "./src"),
+        ],
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -59,20 +63,31 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: "style-loader", // creates style nodes from JS strings
+          },
+          {
+            loader: "css-loader", // translates CSS into CommonJS
+          },
+        ],
+      },
     ],
   },
   externals: {
-    lodash: {
-      commonjs: "lodash",
-      commonjs2: "lodash",
-      amd: "lodash",
-      root: "_",
-    },
     react: {
       commonjs: "react",
       commonjs2: "react",
       amd: "react",
       root: "react",
     },
+    ['lunar-typescript']: {
+      commonjs: "lunar-typescript",
+      commonjs2: "lunar-typescript",
+      amd: "lunar-typescript",
+      root: "lunar-typescript",
+    }
   },
 };
