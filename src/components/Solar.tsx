@@ -25,7 +25,7 @@ export default function Solar({
   getTime,
 }: {
   defaultTime: [y: IYear, m: IMonth, d: IDay];
-  getTime: any;
+  getTime: ([sy, sm, sd]: [IYear, IMonth, IDay]) => any;
 }) {
   const [year, setYear] = useState<IYear>(2021);
   const [month, setMonth] = useState<IMonth>(2);

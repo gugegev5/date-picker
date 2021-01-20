@@ -1,8 +1,3 @@
-// import { Lunar } from "lunar-typescript/dist/lib/Lunar";
-// import { LunarUtil } from "lunar-typescript/dist/lib/LunarUtil";
-// import { Solar } from "lunar-typescript/dist/lib/Solar";
-// import { SolarUtil } from "lunar-typescript/dist/lib/SolarUtil";
-import { SolarUtil, Solar, LunarUtil, Lunar } from "lunar-typescript";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import MultiPicker from "rmc-picker/lib/MultiPicker";
 import Picker from "rmc-picker/lib/Picker";
@@ -35,7 +30,7 @@ export default function LunarPicker({
   getTime,
 }: {
   defaultTime: [sy: IYear, sy: IMonth, sy: IDay];
-  getTime: ([sy, sm, sd]: [IYear, IMonth, IDay]) => [IYear, IMonth, IDay];
+  getTime: ([sy, sm, sd]: [IYear, IMonth, IDay]) => any;
 }) {
   const [lunarY, lunarM, lunarD] = useMemo(() => SolarToLunar([sy, sm, sd]), [
     sy,

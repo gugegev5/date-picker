@@ -154,19 +154,6 @@ for (let day = 1; day <= 30; day++) {
   LUNAR_DAYS.push(day as ILunarDay);
 }
 
-// class LeapMonth {
-//   leapM = 0;
-//   constructor(leapM: number) {
-//     this.leapM = leapM;
-//   }
-//   getLunarNum() {
-//     return this.leapM > 12 ? this.leapM - 12 : this.leapM;
-//   }
-//   toString() {
-//     return
-//   }
-// }
-
 export function checkLunarMonth(
   lunarYear: number,
   lunarMonth: ILunarMonth
