@@ -11,4 +11,4 @@ document.body.appendChild(div2);
 function getTime(time) {
   div2.innerHTML = time;
 }
-ReactDom.render(<W getTime={getTime} defaultTime={[2020, 2, 28]} />, div);
+ReactDom.render(<W getTime={getTime} defaultTime={[2020, 5, 24]} />, div);
