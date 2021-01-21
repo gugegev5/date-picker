@@ -1,4 +1,5 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "production",
@@ -18,6 +19,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js", ".jsx"],
     mainFiles: ["index"],
   },
+  plugins: [new MiniCssExtractPlugin()],
   module: {
     rules: [
       {
@@ -44,13 +46,18 @@ module.exports = {
         test: /\.less$/,
         use: [
           {
-            loader: "style-loader", // creates style nodes from JS strings
+            loader: MiniCssExtractPlugin.loader, // creates style nodes from JS strings
+            // loader: 'style-loader', // creates style nodes from JS strings
           },
           {
             loader: "css-loader", // translates CSS into CommonJS
             options: {
-              importLoaders: 1,
-              modules: true,
+              // importLoaders: 1,
+              modules: {
+                compileType: "module",
+                mode: "local",
+                localIdentName: "[path]_[name]_[local]",
+              },
             },
           },
           {
@@ -67,7 +74,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: "style-loader", // creates style nodes from JS strings
+            loader: MiniCssExtractPlugin.loader, // creates style nodes from JS strings
           },
           {
             loader: "css-loader", // translates CSS into CommonJS
@@ -84,10 +91,7 @@ module.exports = {
       // root: "react",
     },
     ["lunar-typescript"]: {
-      // commonjs: "lunar-typescript",
       commonjs2: "lunar-typescript",
-      // amd: "lunar-typescript",
-      // root: "lunar-typescript",
     },
   },
 };
