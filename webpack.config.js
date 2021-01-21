@@ -83,11 +83,11 @@ module.exports = {
       amd: "react",
       root: "react",
     },
-    ['lunar-typescript']: {
+    ["lunar-typescript"]: {
       commonjs: "lunar-typescript",
       commonjs2: "lunar-typescript",
       amd: "lunar-typescript",
       root: "lunar-typescript",
-    }
+    },
   },
 };

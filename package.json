@@ -1,8 +1,11 @@
 {
   "name": "@gup-front/date-picker",
   "version": "0.2.0",
+  "sideEffects": [
+    "src/components/rmc-picker.css"
+  ],
   "scripts": {
-    "dev": "webpack --config webpack.dev.config.js --watch",
+    "dev": "webpack --config webpack.test.config.js --watch",
     "build": "webpack",
     "lunar": "node ./script/lunar.js",
     "upload": "node ./script/upload.js",
