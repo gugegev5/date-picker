@@ -9,7 +9,7 @@ module.exports = {
     library: "datepicker",
     libraryTarget: "umd",
   },
-  devtool: "inline-source-map",
+  // devtool: "inline-source-map",
   // devtool: "source-map",
   // optimization: {
   //   runtimeChunk: true,

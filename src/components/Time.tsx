@@ -15,11 +15,13 @@ export default function Time({
   getTime,
   onConfirm,
   defaultType,
+  yearsRange,
 }: {
   defaultTime: [IYear, IMonth, IDay];
   getTime: (t: [IYear, IMonth, IDay]) => any;
   onConfirm: (t: [IYear, IMonth, IDay]) => any;
   defaultType: number;
+  yearsRange?: [number, number];
 }) {
   const [ymd, setYMD] = useState<[IYear, IMonth, IDay]>(defaultTime);
   const setTime = useCallback((t: [IYear, IMonth, IDay]) => {
@@ -33,7 +35,7 @@ export default function Time({
       : SELECT.solar
   );
   useEffect(() => setSel(defaultType), [defaultType]);
-  
+
   const selectSolar = useCallback(() => setSel(SELECT.solar), []);
   const selectLunar = useCallback(() => setSel(SELECT.lunar), []);
   const setToday = useCallback(() => {
@@ -46,11 +48,11 @@ export default function Time({
   }, []);
 
   const solarComp = useMemo(
-    () => <SolarPicker defaultTime={ymd} getTime={setTime} />,
+    () => <SolarPicker defaultTime={ymd} getTime={setTime} yearsRange={yearsRange} />,
     [ymd]
   );
   const lunarComp = useMemo(
-    () => <LunarPicker defaultTime={ymd} getTime={setTime} />,
+    () => <LunarPicker defaultTime={ymd} getTime={setTime} yearsRange={yearsRange} />,
     [ymd]
   );
   return (

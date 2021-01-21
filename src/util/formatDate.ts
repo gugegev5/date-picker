@@ -144,6 +144,17 @@ for (let y = 1900; y <= 2022; y++) {
   YEARS.push(y as IYear);
 }
 
+export function getRangeYears(range?: [number, number]) {
+  if (range) {
+    const YEARS_RANGE: IYear[] = [];
+    for (let y = range[0]; y <= range[1]; y++) {
+      YEARS_RANGE.push(y as IYear);
+    }
+    return YEARS_RANGE;
+  }
+  return YEARS;
+}
+
 export const LUNAR_MONTH: ILunarMonth[] = [];
 for (let mon = 1; mon <= 12; mon++) {
   LUNAR_MONTH.push(mon as ILunarMonth);
@@ -158,7 +169,8 @@ export function checkLunarMonth(
   lunarYear: number,
   lunarMonth: ILunarMonth
 ): ILunarMonth {
-  if (LunarUtil.getLeapMonth(lunarYear) === 0) {
+  const leap = LunarUtil.getLeapMonth(lunarYear);
+  if (leap === 0 || leap !== lunarMonth - 12) {
     return (lunarMonth > 12 ? lunarMonth - 12 : lunarMonth) as ILunarMonth;
   }
   return lunarMonth;

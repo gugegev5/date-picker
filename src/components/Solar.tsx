@@ -1,14 +1,16 @@
-import { SolarUtil } from "lunar-typescript/dist/lib/SolarUtil";
+import { SolarUtil } from "lunar-typescript";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import MultiPicker from "rmc-picker/lib/MultiPicker";
 import Picker from "rmc-picker/lib/Picker";
-import { dayToStr, monthToStr, IMonth, IDay, IYear } from "../util/formatDate";
+import {
+  dayToStr,
+  monthToStr,
+  IMonth,
+  IDay,
+  IYear,
+  getRangeYears,
+} from "../util/formatDate";
 import "./rmc-picker.css";
-
-const YEARS: IYear[] = [];
-for (let y = 1900; y <= 2022; y++) {
-  YEARS.push(y as IYear);
-}
 
 const MONTH: IMonth[] = [];
 for (let mon = 1; mon <= 12; mon++) {
@@ -23,9 +25,11 @@ for (let day = 1; day <= 31; day++) {
 export default function Solar({
   defaultTime: [y, m, d],
   getTime,
+  yearsRange,
 }: {
   defaultTime: [y: IYear, m: IMonth, d: IDay];
   getTime: ([sy, sm, sd]: [IYear, IMonth, IDay]) => any;
+  yearsRange?: [number, number];
 }) {
   const [year, setYear] = useState<IYear>(2021);
   const [month, setMonth] = useState<IMonth>(2);
@@ -59,19 +63,12 @@ export default function Solar({
     [setTime]
   );
 
-  //   const onScrollChange = useCallback(
-  //     (value: any) => {
-  //       console.log("onScrollChange", value);
-  //     },
-  //     [setTime]
-  //   );
-
   const Years = useMemo(
     () =>
-      YEARS.map((year) => (
+      getRangeYears(yearsRange).map((year) => (
         <Picker.Item value={year} key={year}>{`${year}年`}</Picker.Item>
       )),
-    [YEARS]
+    [yearsRange]
   );
   const Month = useMemo(
     () =>
@@ -99,7 +96,6 @@ export default function Solar({
     <MultiPicker
       selectedValue={[year, month, day]}
       onValueChange={onChange}
-      //   onScrollChange={onScrollChange}
     >
       <Picker indicatorClassName="my-picker-indicator" key="year">
         {Years}

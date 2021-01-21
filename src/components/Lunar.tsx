@@ -17,6 +17,7 @@ import {
   getLunarDaysOfMonth,
   checkLunarMonth,
   SolarToLunar,
+  getRangeYears,
 } from "../util/formatDate";
 import "./rmc-picker.css";
 
@@ -28,9 +29,11 @@ import "./rmc-picker.css";
 export default function LunarPicker({
   defaultTime: [sy, sm, sd],
   getTime,
+  yearsRange,
 }: {
   defaultTime: [sy: IYear, sy: IMonth, sy: IDay];
   getTime: ([sy, sm, sd]: [IYear, IMonth, IDay]) => any;
+  yearsRange?: [number, number];
 }) {
   const [lunarY, lunarM, lunarD] = useMemo(() => SolarToLunar([sy, sm, sd]), [
     sy,
@@ -69,19 +72,12 @@ export default function LunarPicker({
     [setTime]
   );
 
-  //   const onScrollChange = useCallback(
-  //     (value: any) => {
-  //       console.log("onScrollChange", value);
-  //     },
-  //     [setTime]
-  //   );
-
   const YearComponents = useMemo(
     () =>
-      YEARS.map((year) => (
+      getRangeYears(yearsRange).map((year) => (
         <Picker.Item value={year} key={year}>{`${year}年`}</Picker.Item>
       )),
-    [YEARS]
+    [yearsRange]
   );
   const MonthComponents = useMemo(
     () =>
@@ -109,7 +105,6 @@ export default function LunarPicker({
     <MultiPicker
       selectedValue={[lunarYear, lunarMonth, lunarDay]}
       onValueChange={onChange}
-      //   onScrollChange={onScrollChange}
     >
       <Picker indicatorClassName="my-picker-indicator" key="year">
         {YearComponents}

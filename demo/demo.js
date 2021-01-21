@@ -11,4 +11,5 @@ document.body.appendChild(div2);
 function getTime(time) {
   div2.innerHTML = time;
 }
+// ReactDom.render(<W getTime={getTime} defaultTime={[2020, 5, 24]} defaultType={2} yearsRange={[1990, 2030]}/>, div);
 ReactDom.render(<W getTime={getTime} defaultTime={[2020, 5, 24]} defaultType={2}/>, div);
