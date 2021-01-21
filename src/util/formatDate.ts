@@ -1,4 +1,5 @@
 import { Lunar, LunarUtil, Solar } from "lunar-typescript";
+import { IDay, IMonth, IYear, ILunarMonth, ILunarDay, ILunarYear } from "../..";
 
 // enum MONTH {
 //   Jan = "0",
@@ -14,62 +15,6 @@ import { Lunar, LunarUtil, Solar } from "lunar-typescript";
 //   Nov = "10",
 //   Dec = "11",
 // }
-
-export type IYear = number;
-
-export type ILunarYear = number;
-
-export type IMonth = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-
-export type ILunarMonth =
-  | IMonth
-  | 13
-  | 14
-  | 15
-  | 16
-  | 17
-  | 18
-  | 19
-  | 20
-  | 21
-  | 22
-  | 23
-  | 24;
-
-export type IDay =
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 17
-  | 18
-  | 19
-  | 20
-  | 21
-  | 22
-  | 23
-  | 24
-  | 25
-  | 26
-  | 27
-  | 28
-  | 29
-  | 30
-  | 31;
-
-export type ILunarDay = Exclude<IDay, 31>;
 
 export function dayToStr(day: IDay): string {
   return day < 10 ? `0${day}` : `${day}`;
