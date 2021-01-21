@@ -3,26 +3,20 @@ import merge from "classnames";
 import SolarPicker from "./Solar";
 import LunarPicker from "./Lunar";
 import css from "./Time.less";
-import { IDay, IMonth, IYear } from "../util/formatDate";
+import DatePicker, { IDay, IMonth, IYear } from "../../";
 
 const SELECT = {
   solar: 1,
   lunar: 2,
 };
 
-export default function Time({
+const Time: typeof DatePicker = ({
   defaultTime,
   getTime,
   onConfirm,
   defaultType,
   yearsRange,
-}: {
-  defaultTime: [IYear, IMonth, IDay];
-  getTime: (t: [IYear, IMonth, IDay]) => any;
-  onConfirm: (t: [IYear, IMonth, IDay]) => any;
-  defaultType: number;
-  yearsRange?: [number, number];
-}) {
+}) => {
   const [ymd, setYMD] = useState<[IYear, IMonth, IDay]>(defaultTime);
   const setTime = useCallback((t: [IYear, IMonth, IDay]) => {
     setYMD(t);
@@ -48,11 +42,23 @@ export default function Time({
   }, []);
 
   const solarComp = useMemo(
-    () => <SolarPicker defaultTime={ymd} getTime={setTime} yearsRange={yearsRange} />,
+    () => (
+      <SolarPicker
+        defaultTime={ymd}
+        getTime={setTime}
+        yearsRange={yearsRange}
+      />
+    ),
     [ymd]
   );
   const lunarComp = useMemo(
-    () => <LunarPicker defaultTime={ymd} getTime={setTime} yearsRange={yearsRange} />,
+    () => (
+      <LunarPicker
+        defaultTime={ymd}
+        getTime={setTime}
+        yearsRange={yearsRange}
+      />
+    ),
     [ymd]
   );
   return (
@@ -87,4 +93,6 @@ export default function Time({
       </div>
     </div>
   );
-}
+};
+
+export default Time;

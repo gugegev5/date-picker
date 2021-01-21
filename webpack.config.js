@@ -6,8 +6,8 @@ module.exports = {
   output: {
     filename: "datepicker.js",
     path: path.resolve(__dirname, "dist"),
-    library: "datepicker",
-    libraryTarget: "umd",
+    // library: "datepicker",
+    libraryTarget: "commonjs2",
   },
   // devtool: "inline-source-map",
   // devtool: "source-map",
@@ -78,16 +78,16 @@ module.exports = {
   },
   externals: {
     react: {
-      commonjs: "react",
+      // commonjs: "react",
       commonjs2: "react",
-      amd: "react",
-      root: "react",
+      // amd: "react",
+      // root: "react",
     },
     ["lunar-typescript"]: {
-      commonjs: "lunar-typescript",
+      // commonjs: "lunar-typescript",
       commonjs2: "lunar-typescript",
-      amd: "lunar-typescript",
-      root: "lunar-typescript",
+      // amd: "lunar-typescript",
+      // root: "lunar-typescript",
     },
   },
 };
