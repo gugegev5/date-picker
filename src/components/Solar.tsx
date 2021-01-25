@@ -2,14 +2,8 @@ import { SolarUtil } from "lunar-typescript";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import MultiPicker from "rmc-picker/lib/MultiPicker";
 import Picker from "rmc-picker/lib/Picker";
-import {
-  dayToStr,
-  monthToStr,
-  IMonth,
-  IDay,
-  IYear,
-  getRangeYears,
-} from "../util/formatDate";
+import { IMonth, IDay, IYear } from "../..";
+import { dayToStr, monthToStr, getRangeYears } from "../util/formatDate";
 import "./rmc-picker.css";
 
 const MONTH: IMonth[] = [];
@@ -93,10 +87,7 @@ export default function Solar({
   );
 
   return (
-    <MultiPicker
-      selectedValue={[year, month, day]}
-      onValueChange={onChange}
-    >
+    <MultiPicker selectedValue={[year, month, day]} onValueChange={onChange}>
       <Picker indicatorClassName="my-picker-indicator" key="year">
         {Years}
       </Picker>
